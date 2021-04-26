@@ -1,5 +1,5 @@
 {
-    "name": "magegirl/offers",
+    "name": "dnd/module-offers",
     "description": "",
     "require": {
         "php": "~7.4.0",
