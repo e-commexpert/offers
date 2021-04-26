@@ -6,7 +6,8 @@ Module offers for Dnd
 The extension must be installed via `composer`. To proceed, run these commands in your terminal:
 
 ```
-composer require dnd/module-offers
+composer config repositories.magegirl-offers git "https://github.com/magegirl/offers.git"
+composer require magegirl/module-offers
 php bin/magento module:enable Dnd_Offers
 php bin/magento setup:upgrade
 php bin/magento setup:di:compile
