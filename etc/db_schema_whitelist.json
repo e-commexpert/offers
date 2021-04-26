@@ -1,0 +1,43 @@
+{
+    "dnd_offers": {
+        "column": {
+            "offer_id": true,
+            "label": true,
+            "image": true,
+            "link": true,
+            "date_from": true,
+            "date_to": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "dnd_offers_store": {
+        "column": {
+            "offer_id": true,
+            "store_id": true
+        },
+        "index": {
+            "DND_OFFERS_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "DND_OFFERS_STORE_OFFER_ID": true,
+            "DND_OFFERS_STORE_STORE_ID": true
+        }
+    },
+    "dnd_offers_category": {
+        "column": {
+            "offer_id": true,
+            "category_id": true
+        },
+        "index": {
+            "DND_OFFERS_CATEGORY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "DND_OFFERS_CATEGORY_OFFER_ID": true,
+            "DND_OFFERS_CATEGORY_CATEGORY_ID": true
+        }
+    }
+}

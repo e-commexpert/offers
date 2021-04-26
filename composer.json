@@ -1,0 +1,27 @@
+{
+    "name": "dnd/module-offers",
+    "description": "",
+    "require": {
+        "php": "~7.4.0",
+        "magento/framework": "*",
+        "magento/module-catalog": "*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": {
+        "name": "Caroline Framery",
+        "email": "framery.caroline@laposte.net"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Dnd\\Offers\\": ""
+        }
+    }
+},

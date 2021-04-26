@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var \Dnd\Offers\Block\Offer $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$offers = $block->getOffers();
+if (count($offers) > 0):
+    ?>
+    <?php foreach ($offers as $offer): ?>
+        <div class="offer">
+            <a href="<?= $escaper->escapeUrl($offer->getLink()); ?>"
+                target="_blank">
+                <img src="<?= $escaper->escapeHtmlAttr($offer->getImageUrl()); ?>"
+                     alt="<?= $escaper->escapeHtmlAttr($offer->getLabel()); ?>"/>
+            </a>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

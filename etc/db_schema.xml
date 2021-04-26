@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- add offers table -->
+    <table name="dnd_offers" resource="default" engine="innodb" comment="Dnd Offers Table">
+        <column xsi:type="smallint" name="offer_id" unsigned="false" nullable="false" identity="true" comment="Offer Id"/>
+        <column xsi:type="varchar" name="label" nullable="false" length="255" comment="Offer Label"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Offer Image"/>
+        <column xsi:type="varchar" name="link" nullable="false" length="255" comment="Offer Link"/>
+        <column xsi:type="date" name="date_from" nullable="false" comment="Offer Date from"/>
+        <column xsi:type="date" name="date_to" nullable="false" comment="Offer Date to"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="offer_id"/>
+        </constraint>
+    </table>
+    <!-- add offers store table -->
+    <table name="dnd_offers_store" resource="default" engine="innodb" comment="Dnd Offers store Table">
+        <column xsi:type="smallint" name="offer_id" unsigned="false" nullable="false" identity="false"
+            comment="Offer Id"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false"
+            comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="offer_id"/>
+            <column name="store_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DND_OFFERS_STORE_OFFER_ID" table="dnd_offers_store"
+                    column="offer_id" referenceTable="dnd_offers" referenceColumn="offer_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="DND_OFFERS_STORE_STORE_ID" table="dnd_offers_store"
+                    column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+        <index referenceId="DND_OFFERS_STORE_ID">
+            <column name="store_id"/>
+        </index>
+    </table>
+    <!-- add offers category table -->
+    <table name="dnd_offers_category" resource="default" engine="innodb" comment="Dnd Offers category Table">
+        <column xsi:type="smallint" name="offer_id" unsigned="false" nullable="false" identity="false"
+                comment="Offer Id"/>
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" identity="false"
+                comment="Category ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="offer_id"/>
+            <column name="category_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="DND_OFFERS_CATEGORY_OFFER_ID" table="dnd_offers_category"
+                    column="offer_id" referenceTable="dnd_offers" referenceColumn="offer_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="DND_OFFERS_CATEGORY_CATEGORY_ID" table="dnd_offers_category"
+                    column="category_id" referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <index referenceId="DND_OFFERS_CATEGORY_ID">
+            <column name="category_id"/>
+        </index>
+    </table>
+</schema>
